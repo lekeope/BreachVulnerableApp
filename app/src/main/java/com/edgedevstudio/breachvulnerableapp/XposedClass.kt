@@ -24,7 +24,6 @@ class XposedClass : IXposedHookLoadPackage {
                 lpparam.classLoader,
                 functionToHook,
                 Int::class.java,
-                Int::class.java,
                 object : XC_MethodHook() {
                     override fun beforeHookedMethod(param: MethodHookParam) {
                         super.beforeHookedMethod(param)
