@@ -28,7 +28,7 @@ class XposedClass : IXposedHookLoadPackage {
                     override fun beforeHookedMethod(param: MethodHookParam) {
                         super.beforeHookedMethod(param)
                         param.args[0] = 1
-                        XposedBridge.log("value of i after hooking = "+param.args[0])
+                        XposedBridge.log("value of d after hooking = "+param.args[0])
                     }
                 })
         }
