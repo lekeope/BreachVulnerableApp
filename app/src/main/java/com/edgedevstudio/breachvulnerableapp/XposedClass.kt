@@ -12,6 +12,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage
  **/
 class XposedClass : IXposedHookLoadPackage {
     override fun handleLoadPackage(lpparam: XC_LoadPackage.LoadPackageParam) {
+        XposedBridge.log("Launched App: "+lpparam.packageName)
+
         val appPackageName = "com.edgedevstudio.vulnerableapp"
         val classToHook = appPackageName + ".MainActivity"
         val functionToHook = "setOutput"
@@ -27,8 +29,9 @@ class XposedClass : IXposedHookLoadPackage {
                 object : XC_MethodHook() {
                     override fun beforeHookedMethod(param: MethodHookParam) {
                         super.beforeHookedMethod(param)
+                        XposedBridge.log("value of \"d\" before hooking = "+param.args[0])
                         param.args[0] = 1
-                        XposedBridge.log("value of d after hooking = "+param.args[0])
+                        XposedBridge.log("value of \"d\" after hooking = "+param.args[0])
                     }
                 })
         }
